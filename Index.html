@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Gen Gaming</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  font-family: 'Poppins', sans-serif;
+  color: #e5e7eb;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.6) !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+.nav-link {
+  margin-left: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.nav-link:hover {
+  color: #38bdf8 !important;
+}
+
+
+.section-page {
+  display: none;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+}
+.active-page {
+  display: block;
+}
+
+
+.hero {
+  padding: 160px 0;
+  text-align: center;
+  background: radial-gradient(circle at top left, #1e293b, #020617);
+}
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: 1.3rem;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(99,102,241,0.7);
+}
+
+
+.game-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.game-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.7);
+}
+
+
+.game-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(8px);
+}
+.game-modal-content {
+  background: #0f172a;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 600px;
+  text-align: center;
+  animation: zoomIn 0.4s ease;
+}
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.game-modal img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 35px;
+  cursor: pointer;
+  color: white;
+}
+
+
+#about h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+#about p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+
+.footer {
+  background: #000;
+  padding: 20px;
+  margin-top: 60px;
+  text-align: center;
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">New Gen Gaming</a>
+    <div>
+      <span class="nav-link text-light" onclick="showPage('home')">Home</span>
+      <span class="nav-link text-light" onclick="showPage('games')">Games</span>
+      <span class="nav-link text-light" onclick="showPage('about')">About</span>
+    </div>
+  </div>
+</nav>
+
+
+<section id="home" class="section-page active-page">
+  <div class="container hero">
+    <h1>Welcome to New Gen Gaming</h1>
+    <p>Experience legendary stories and epic adventures.</p>
+    <button class="btn btn-primary mt-3" onclick="showPage('games')">Explore Games</button>
+  </div>
+</section>
+
+
+<section id="games" class="section-page container my-5">
+  <h2 class="text-center mb-5 fw-bold text-info">Popular Games</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('Red Dead Redemption 2','An immersive western open-world experience.','https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg')">
+        <h4>Red Dead Redemption 2</h4>
+        <p>Open-world western adventure</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('Ghost of Tsushima','Samurai action masterpiece set in feudal Japan.','https://upload.wikimedia.org/wikipedia/en/b/b6/Ghost_of_Tsushima.jpg')">
+        <h4>Ghost of Tsushima</h4>
+        <p>Samurai action masterpiece</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('God of War Ragnarök','Epic Norse mythology adventure of Kratos.','https://upload.wikimedia.org/wikipedia/en/e/ee/God_of_War_Ragnar%C3%B6k_cover.jpg')">
+        <h4>God of War Ragnarök</h4>
+        <p>Norse mythology epic</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('The Last of Us','Emotional survival story of Joel and Ellie.','https://upload.wikimedia.org/wikipedia/en/8/86/The_Last_of_Us_cover.png')">
+        <h4>The Last of Us</h4>
+        <p>Story-driven survival</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('Resident Evil 4 Remake','Survival horror remake with modern graphics and intense action.','https://upload.wikimedia.org/wikipedia/en/4/4a/Resident_Evil_4_Remake.jpg')">
+        <h4>Resident Evil 4 Remake</h4>
+        <p>Modern survival horror</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="game-card" onclick="openGame('Uncharted 4','Cinematic treasure-hunting adventure of Nathan Drake.','https://upload.wikimedia.org/wikipedia/en/1/1a/Uncharted_4_box_artwork.jpg')">
+        <h4>Uncharted 4</h4>
+        <p>Cinematic action adventure</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="about" class="section-page container my-5">
+  <h2 class="text-center">About This Website</h2>
+  <p> <strong>New Gen Gaming</strong> is a student-made website designed to showcase popular video games in a fun, interactive way. You can explore games, view details, and enjoy a clean browsing experience.</p>
+  <p> This project is built using <strong>HTML, CSS, and Bootstrap</strong>. It includes clickable game cards with modal popups, a responsive layout for any device, and smooth navigation between sections. The goal is to create a website that looks professional while staying user-friendly.</p>
+  <p> The website is perfect for practicing web development skills, learning how to structure pages, and experimenting with design. All images and information are for educational purposes, and this site is not affiliated with any game companies.</p>
+  <p> We hope this website inspires others to create their own projects and explore coding in a creative, fun way!</p>
+</section>
+
+<footer class="footer">
+  © 2026 New Gen Gaming
+</footer>
+
+
+<div id="gameModal" class="game-modal">
+  <span class="close-btn" onclick="closeGame()">×</span>
+  <div class="game-modal-content">
+    <img id="modalImage">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.section-page');
+  pages.forEach(page => page.classList.remove('active-page'));
+  document.getElementById(pageId).classList.add('active-page');
+}
+
+function openGame(title, desc, img) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalDesc").innerText = desc;
+  document.getElementById("modalImage").src = img;
+  document.getElementById("gameModal").style.display = "flex";
+}
+
+function closeGame() {
+  document.getElementById("gameModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
